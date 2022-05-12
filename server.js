@@ -11,6 +11,17 @@ app.get('/', (req, res) => {
   res.json({message: 'alive'});
 });
 
+// A PARTIR DE AQUÍ, ESTAN TODOS LOS ENDPOINTS
+
+app.get('/explorers', async (req, res) => {
+    const allExplorers =  await prisma.explorer.findMany({});
+    res.json(allExplorers);
+  });
+
+  
+// Y AQUÍ TERMINAN LOS ENDPOINTS
+
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
